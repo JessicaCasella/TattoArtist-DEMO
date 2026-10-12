@@ -3,6 +3,9 @@ const layers = [...document.querySelectorAll('[data-depth]')];
 const intensity = document.querySelector('#intensity');
 const toggle = document.querySelector('#toggle');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+const mobileMotion = matchMedia('(max-width: 650px), (pointer: coarse)');
+let viewportWidth = innerWidth;
+let scrollRange = Math.max(1, document.documentElement.scrollHeight - innerHeight);
 let paused = reduced.matches;
 let target = { x: 0, y: 0 };
 let current = { x: 0, y: 0 };
@@ -18,26 +21,43 @@ function render() {
   const strength = Number(intensity.value) / 100;
   for (const layer of layers) {
     const depth = Number(layer.dataset.depth);
-    const x = current.x * 38 * depth * strength;
-    const y = (current.y * 28 - scrollCurrent * 90) * depth * strength;
-    const angle = (current.x * 0.65 + scrollCurrent * 1.5) * depth * strength;
-    layer.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${angle}deg) scale(1.025)`;
+    if (mobileMotion.matches) {
+      // Small vertical motion avoids oversized rotating GPU surfaces on phones.
+      const y = -scrollCurrent * 24 * depth * strength;
+      layer.style.transform = `translateY(${y.toFixed(2)}px)`;
+    } else {
+      const x = current.x * 38 * depth * strength;
+      const y = (current.y * 28 - scrollCurrent * 90) * depth * strength;
+      const angle = (current.x * 0.65 + scrollCurrent * 1.5) * depth * strength;
+      layer.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${angle}deg) scale(1.025)`;
+    }
   }
   if (Math.abs(target.x - current.x) + Math.abs(target.y - current.y) + Math.abs(scrollTarget - scrollCurrent) > 0.001) requestRender();
 }
 function requestRender() { if (!frame) frame = requestAnimationFrame(render); }
 stage.addEventListener('pointermove', event => {
-  if (paused || event.pointerType === 'touch') return;
+  if (paused || mobileMotion.matches || event.pointerType === 'touch') return;
   target = { x: (event.clientX / innerWidth - 0.5) * 2, y: (event.clientY / innerHeight - 0.5) * 2 };
   requestRender();
 });
 function syncScroll() {
-  const range = document.documentElement.scrollHeight - innerHeight;
-  scrollTarget = paused || range <= 0 ? 0 : Math.max(0, Math.min(1, scrollY / range));
+  scrollTarget = paused ? 0 : Math.max(0, Math.min(1, scrollY / scrollRange));
   requestRender();
 }
 window.addEventListener('scroll', syncScroll, { passive: true });
-window.addEventListener('resize', syncScroll);
+function measureScrollRange() {
+  scrollRange = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+  syncScroll();
+}
+window.addEventListener('resize', () => {
+  // Browser toolbar changes height during scrolling; don't reframe the artwork.
+  if (!mobileMotion.matches || innerWidth !== viewportWidth) {
+    viewportWidth = innerWidth;
+    measureScrollRange();
+  }
+});
+window.addEventListener('load', measureScrollRange);
+mobileMotion.addEventListener('change', () => { reset(); measureScrollRange(); });
 function reset() { target = { x: 0, y: 0 }; requestRender(); }
 stage.addEventListener('pointerleave', reset);
 window.addEventListener('blur', reset);
