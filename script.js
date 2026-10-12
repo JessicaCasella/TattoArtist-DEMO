@@ -15,22 +15,23 @@ let frame = 0;
 
 function render() {
   frame = 0;
+  if (mobileMotion.matches) {
+    // Phones use a single static background; no masked surfaces are animated.
+    current = { x: 0, y: 0 };
+    scrollCurrent = 0;
+    for (const layer of layers) layer.style.transform = 'none';
+    return;
+  }
   current.x += (target.x - current.x) * 0.07;
   current.y += (target.y - current.y) * 0.07;
   scrollCurrent += (scrollTarget - scrollCurrent) * 0.07;
   const strength = Number(intensity.value) / 100;
   for (const layer of layers) {
     const depth = Number(layer.dataset.depth);
-    if (mobileMotion.matches) {
-      // Small vertical motion avoids oversized rotating GPU surfaces on phones.
-      const y = -scrollCurrent * 24 * depth * strength;
-      layer.style.transform = `translateY(${y.toFixed(2)}px)`;
-    } else {
-      const x = current.x * 38 * depth * strength;
-      const y = (current.y * 28 - scrollCurrent * 90) * depth * strength;
-      const angle = (current.x * 0.65 + scrollCurrent * 1.5) * depth * strength;
-      layer.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${angle}deg) scale(1.025)`;
-    }
+    const x = current.x * 38 * depth * strength;
+    const y = (current.y * 28 - scrollCurrent * 90) * depth * strength;
+    const angle = (current.x * 0.65 + scrollCurrent * 1.5) * depth * strength;
+    layer.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${angle}deg) scale(1.025)`;
   }
   if (Math.abs(target.x - current.x) + Math.abs(target.y - current.y) + Math.abs(scrollTarget - scrollCurrent) > 0.001) requestRender();
 }
@@ -41,6 +42,7 @@ stage.addEventListener('pointermove', event => {
   requestRender();
 });
 function syncScroll() {
+  if (mobileMotion.matches) return;
   scrollTarget = paused ? 0 : Math.max(0, Math.min(1, scrollY / scrollRange));
   requestRender();
 }
@@ -104,3 +106,4 @@ flashDialog.addEventListener('click', event => {
   }
 });
 syncScroll();
+requestRender();

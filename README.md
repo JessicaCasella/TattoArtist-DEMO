@@ -2,7 +2,7 @@
 
 Demo de una web para un estudio ficticio de tatuajes en Montevideo.
 
-- Fondo por capas con movimiento del mouse y profundidad al hacer scroll.
+- Fondo por capas con movimiento del mouse y profundidad al hacer scroll en escritorio; en celulares, fondo estático para evitar parpadeos durante el desplazamiento.
 - Portada centrada e iconos de redes dibujados en SVG.
 - Galería de tres flashes con ampliación en un diálogo.
 - Diseño responsive y respeto por la preferencia de movimiento reducido.

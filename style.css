@@ -50,9 +50,10 @@ dialog{width:min(360px,calc(100vw - 40px));background:#14120f;color:#decbb0;bord
 .scene{z-index:0}
 .stage{z-index:1;background:transparent}
 @media(max-width:650px),(pointer:coarse){
-  .scene{inset:auto;top:-48px;left:-24px;width:calc(100% + 48px);height:calc(100svh + 96px);perspective:none;overflow:hidden}
-  .texture{mask-image:none;-webkit-mask-image:none;opacity:.42;background-size:cover}
-  .scene:before{display:none}
-  .art{filter:none;will-change:auto;backface-visibility:visible;background-size:cover}
-  .skull{opacity:.74}.flowers{opacity:.58}.moth{opacity:.95}
+  /* One ordinary background painted with the document: no fixed GPU layers. */
+  body{background-color:#080807;background-image:linear-gradient(#0005,#0005),url('assets/tattoo-background.png');background-size:100% auto;background-repeat:repeat-y;background-position:center top}
+  .scene{display:none}
+  .background-settings{display:none}
+  .social-flash svg{filter:none}
+  dialog::backdrop{backdrop-filter:none}
 }
