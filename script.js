@@ -12,16 +12,21 @@ let current = { x: 0, y: 0 };
 let scrollTarget = 0;
 let scrollCurrent = 0;
 let frame = 0;
+const mobileBackground = document.querySelector('.texture');
 
 function render() {
   frame = 0;
   if (mobileMotion.matches) {
-    // Phones use a single static background; no masked surfaces are animated.
+    // Animate one lightweight surface instead of four filtered, masked layers.
     current = { x: 0, y: 0 };
-    scrollCurrent = 0;
+    scrollCurrent += (scrollTarget - scrollCurrent) * 0.08;
+    const offset = -scrollCurrent * 28 * Number(intensity.value) / 100;
+    mobileBackground.style.transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`;
     for (const layer of layers) layer.style.transform = 'none';
+    if (Math.abs(scrollTarget - scrollCurrent) > 0.001) requestRender();
     return;
   }
+  mobileBackground.style.transform = 'none';
   current.x += (target.x - current.x) * 0.07;
   current.y += (target.y - current.y) * 0.07;
   scrollCurrent += (scrollTarget - scrollCurrent) * 0.07;
@@ -42,7 +47,6 @@ stage.addEventListener('pointermove', event => {
   requestRender();
 });
 function syncScroll() {
-  if (mobileMotion.matches) return;
   scrollTarget = paused ? 0 : Math.max(0, Math.min(1, scrollY / scrollRange));
   requestRender();
 }
