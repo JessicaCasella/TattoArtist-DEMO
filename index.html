@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ink Studio · Tatuajes de autor</title>
+  <meta name="description" content="Ink Studio, un estudio ficticio de tatuajes de autor en Montevideo. Blackwork, línea fina y flashes originales.">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="stage" aria-label="Ink Studio — sitio de demostración">
+    <div class="scene" aria-hidden="true">
+      <div class="texture"></div>
+      <div class="art snake" data-depth="0.75"></div>
+      <div class="art skull" data-depth="0.42"></div>
+      <div class="art flowers" data-depth="0.23"></div>
+      <div class="art moth" data-depth="1.1"></div>
+      <div class="vignette"></div>
+    </div>
+    <header class="artist-header"><span class="edition">MONTEVIDEO, UY <span aria-hidden="true">/</span> TATUAJES DE AUTOR</span></header>
+    <section class="intro artist-intro" aria-labelledby="artist-name">
+      <svg class="signature-mark" viewBox="0 0 100 80" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M50 9 54 31 76 40 54 47 50 71 45 48 23 40 45 32Z"/><path d="M50 17 51 35 67 40 51 43 50 63M12 40h7m62 0h7M50 1v4m0 70v4M26 16l8 9m32 30 8 9M74 16l-8 9M34 55l-8 9"/><path d="M17 27c-7 8-7 19 0 27M83 27c7 8 7 19 0 27"/></g></svg>
+      <span class="eyebrow">TRAZOS CON INTENCIÓN</span>
+      <h1 id="artist-name">Ink<br><em>Studio.</em></h1>
+      <p class="artist-tagline">Tu idea. Nuestro trazo. Una pieza tuya.</p>
+      <p class="artist-bio">Blackwork y línea fina, dibujados desde cero.<br>Diseños que nacen de lo que querés contar.</p>
+      <nav class="social-flashes" aria-label="Redes y contacto del artista">
+        <a class="social-flash" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram (nueva pestaña)">
+          <svg viewBox="0 0 90 90" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path class="flash-outline" d="M44 5C57 9 61 16 66 20C80 24 83 34 79 46C83 59 74 69 64 73C56 84 43 86 33 78C18 77 10 67 13 55C5 44 10 31 21 25C25 12 33 6 44 5Z"/><path d="M34 23C30 16 22 17 20 24C19 30 26 35 31 37M57 68c4 10 14 7 14 0M13 44l7 1m51 0 7-1M42 11l3 7M44 75l1 6"/><path stroke-width="1.7" d="M33 29Q28 30 29 36L28 55Q29 62 36 62L55 61Q62 60 61 53L62 36Q61 28 54 29Z"/><path stroke-width="1.7" d="M54 44c1 6-3 11-9 11s-10-5-9-10 5-9 10-8 8 3 8 7Z"/><circle cx="55" cy="35" r="1.6"/></g></svg>
+          <span>Instagram</span>
+        </a>
+        <a class="social-flash" href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="Abrir TikTok (nueva pestaña)">
+          <svg viewBox="0 0 90 90" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path class="flash-outline" d="M45 5 54 16 68 13 69 27 82 35 75 47 80 60 67 66 61 80 47 76 34 84 27 71 13 68 16 54 6 43 18 34 17 20 32 20Z"/><path d="m45 10 2 8M72 34l-6 3M20 61l7-4m30 16-4-6"/><path stroke-width="1.8" d="m47 27 7-1c1 8 5 11 12 12v7c-5 0-8-2-12-4l1 17c0 10-15 15-21 7-7-9-1-19 10-18v7c-8-1-10 6-6 8 5 3 10-1 10-6Z"/><path d="M23 27c-6 5-7 12-3 17m47 16c0 5-3 9-7 12"/></g></svg>
+          <span>TikTok</span>
+        </a>
+        <a class="social-flash" href="https://www.whatsapp.com/" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp (nueva pestaña)">
+          <svg viewBox="0 0 90 90" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path class="flash-outline" d="M45 7C30 5 19 17 16 29C7 40 10 54 19 63L17 79 34 74C48 83 63 78 70 68C84 62 84 46 77 35C76 18 63 8 45 7Z"/><path d="M26 17c-6 7-8 16-5 21M63 73c7-5 10-12 9-20M43 11l1 6M16 49l6-2m51-11 5-2"/><path stroke-width="1.7" d="M45 26C28 25 21 44 29 55l-3 10 10-3c13 7 30-2 29-17-1-11-9-19-20-19Z"/><path stroke-width="1.7" d="m36 35-4 4c-1 7 9 19 18 18l6-5-6-5-4 3c-4-2-7-5-8-8l3-3Z"/></g></svg>
+          <span>Hablemos</span>
+        </a>
+      </nav>
+      <span class="availability"><span aria-hidden="true">✦</span> Agenda abierta · Consultas por mensaje</span>
+      <a class="scroll-cue" href="#depth-study">SEGUÍ EXPLORANDO <span aria-hidden="true">↓</span></a>
+    </section>
+    <section class="depth-study flash-gallery" id="depth-study" aria-labelledby="gallery-title">
+      <span class="eyebrow">DEL CUADERNO A TU PIEL / VOL. 01</span>
+      <h2 id="gallery-title">Pequeñas piezas.<br><em>Mucho carácter.</em></h2>
+      <p>Tres ideas. Mil formas de hacerlas tuyas.</p>
+      <div class="flash-wall">
+        <span class="margin-note" aria-hidden="true">tinta, papel<br>y un poco de obsesión <svg viewBox="0 0 90 45" fill="none"><path d="M5 9c34-12 57 0 70 24m-16-8 17 10-1-17" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>
+        <button class="flash-piece piece-snake" data-flash="0" type="button" aria-label="Ampliar Serpiente, flash blackwork">
+          <span class="paper-tape" aria-hidden="true"></span><span class="flash-print print-snake" role="img" aria-label="Ilustración de una serpiente en tinta negra"></span>
+          <span class="piece-caption"><span>01 / Serpiente</span><span>BLACKWORK</span></span><span class="zoom-mark" aria-hidden="true">↗</span>
+        </button>
+        <button class="flash-piece piece-moth" data-flash="1" type="button" aria-label="Ampliar Nocturna, flash de polilla">
+          <span class="paper-tape" aria-hidden="true"></span><span class="flash-print print-moth" role="img" aria-label="Ilustración de una polilla con alas ornamentadas"></span>
+          <span class="piece-caption"><span>02 / Nocturna</span><span>DOTWORK</span></span><span class="zoom-mark" aria-hidden="true">↗</span>
+        </button>
+        <button class="flash-piece piece-dagger" data-flash="2" type="button" aria-label="Ampliar Amuleto, flash de daga y flor">
+          <span class="paper-tape" aria-hidden="true"></span><span class="flash-print print-dagger" role="img" aria-label="Ilustración de una daga atravesando una peonía"></span>
+          <span class="piece-caption"><span>03 / Amuleto</span><span>FINE LINE</span></span><span class="zoom-mark" aria-hidden="true">↗</span>
+        </button>
+      </div>
+      <span class="gallery-footnote">FLASHES ORIGINALES / TOCÁ UNA PIEZA PARA VERLA DE CERCA</span>
+      <a class="gallery-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Más tinta en Instagram <span aria-hidden="true">⟶</span></a>
+    </section>
+    <footer>
+      <span class="note">INK STUDIO · ESTUDIO FICTICIO / DEMO</span>
+      <details class="background-settings"><summary>Ajustes del fondo</summary><div class="controls">
+        <label for="intensity">Profundidad</label>
+        <input id="intensity" type="range" min="0" max="100" value="65">
+        <button id="toggle" type="button" aria-pressed="false">Pausar movimiento</button>
+        <button id="clean" type="button" aria-pressed="false">Ver solo el fondo</button>
+      </div></details>
+    </footer>
+    <button id="restore" type="button" hidden>Mostrar controles</button>
+  </main>
+  <dialog id="flash-dialog" class="flash-dialog" aria-labelledby="flash-title">
+    <form method="dialog"><button class="dialog-close" aria-label="Cerrar">×</button></form>
+    <span class="eyebrow">INK STUDIO / FLASH VOL. 01</span>
+    <h2 id="flash-title">Serpiente</h2>
+    <div id="flash-detail" class="flash-print print-snake" role="img" aria-label="Flash de serpiente ampliado"></div>
+    <p id="flash-description">Blackwork · Un símbolo de transformación.</p>
+    <a href="https://www.whatsapp.com/" target="_blank" rel="noopener noreferrer" class="gallery-link">Hablemos de esta pieza ⟶</a>
+  </dialog>
+</body>
+</html>
