@@ -53,7 +53,7 @@ dialog{width:min(360px,calc(100vw - 40px));background:#14120f;color:#decbb0;bord
   /* A stable, unmasked surface with extra coverage for the limited translation. */
   body{background:#080807}
   .scene{display:block;position:fixed;top:0;left:0;bottom:auto;right:auto;width:100%;height:100lvh;perspective:none;overflow:hidden;background:#080807}
-  .texture{inset:-40px 0;opacity:1;mask-image:none;-webkit-mask-image:none;background:url('assets/tattoo-background.png') center top/100% auto repeat-y;filter:none;will-change:transform}
+  .texture{inset:-40px 0;opacity:1;mask-image:none;-webkit-mask-image:none;background:url('assets/tattoo-background.png') center center/cover no-repeat;filter:none;will-change:transform}
   .art,.scene:before{display:none}
   .vignette{background:#0005}
   .social-flash svg{filter:none}
